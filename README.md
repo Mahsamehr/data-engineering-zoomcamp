@@ -2,7 +2,7 @@
 
 Welcome to my personal data engineering portfolio! This repo contains my notes, homework, projects, and homework as I work through the [DataTalksClub Data Engineering Zoomcamp](https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main).
 
-## 📚 Week-by-Week Breakdown
+## 📚 Week-by-Week Breakdown:
 
 ### 🧱 Week 1: Containerization & Infrastructure Setup
 - Introduction to Google Cloud Platform (GCP)
