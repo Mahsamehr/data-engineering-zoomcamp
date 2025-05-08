@@ -70,5 +70,24 @@ root@<container_id>:~#
 
 This indicates you're inside the container, and you can run bash commands. To exit, just type exit.
 
+### `docker run -it python:3.9` Command
+
+```bash
+docker run -it python:3.9
+```
+### What it Does
+The docker run -it python:3.9 command creates a new container from the official Python 3.9 Docker image and opens an interactive terminal session.
+
+-it: Combines two options:
+
+-i (interactive): Keeps the standard input open, allowing interaction with the container.
+
+-t (terminal): Allocates a terminal to the container for a more readable, interactive interface.
+
+python:3.9: Specifies the Docker image to use for creating the container. Here, python is the official Docker image for Python, and 3.9 is the specific version tag, meaning it will use Python version 3.9.
+
+This command is often used when you want to run a Python 3.9 environment inside a container, allowing you to execute Python commands interactively.
+
+
 
 
