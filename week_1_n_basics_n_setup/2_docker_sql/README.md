@@ -135,16 +135,7 @@ docker build -t my-image-name .
 #### 2. Run the Container
 After building the image, start a container using:
 
-bash
-Copy
-Edit
 docker run my-image-name
-You can add options like:
 
--it: For interactive terminal access (if your app is a CLI tool).
-
--p 8000:8000: To map container ports to your host machine.
-
---rm: To remove the container after it stops.
 
 
