@@ -24,11 +24,26 @@ Think of it as a **blueprint** for creating Docker containers.
 - Can be stored locally or in remote repositories like **Docker Hub**.
 
 
-## `docker run hello-world` Command
+### `docker run hello-world` Command
 
-The `docker run hello-world` command is used to test whether Docker is functioning properly by running a simple test image.
-
-### Command
 
 ```bash
 docker run hello-world
+
+
+### What it Does
+
+The `docker run hello-world` command is a simple command used to verify that Docker is installed and working correctly on your system. When you run this command, Docker will:
+
+1. Check if the `hello-world` image is available locally on your machine.
+2. If the image is not found, Docker will automatically download (pull) the `hello-world` image from Docker Hub.
+3. Once the image is available, Docker will run it inside a container, which will print a confirmation message to the terminal, letting you know that Docker is functioning properly.
+
+### Expected Output
+
+When you successfully run `docker run hello-world`, you should see the following message:
+
+```bash
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+...
