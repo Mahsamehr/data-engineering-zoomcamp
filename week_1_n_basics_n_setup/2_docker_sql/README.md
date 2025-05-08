@@ -46,4 +46,29 @@ Hello from Docker!
 This message shows that your installation appears to be working correctly.
 ```
 
+### `docker run -it ubuntu bash` Command
+
+```bash
+docker run -it ubuntu bash
+```
+
+### What it Does
+The docker run -it ubuntu bash command starts an interactive Ubuntu container and opens a bash shell inside it.
+
+-it: Combines -i (interactive) and -t (terminal) to allow you to interact with the container.
+
+ubuntu: Uses the official Ubuntu image to create the container.
+
+bash: Starts the bash shell inside the container.
+
+### Expected Output
+After running the command, you should see:
+
+```bash
+root@<container_id>:~#
+```
+
+This indicates you're inside the container, and you can run bash commands. To exit, just type exit.
+
+
 
