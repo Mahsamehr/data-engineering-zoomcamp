@@ -178,5 +178,28 @@ pip install pgcli
 pgcli -U root -d ny_taxi -h localhost
 ```
 
+## Setup jupyter notebook:
+
+- Create a python environment:
+
+```bash 
+python -m venv jupyter-env 
+```
+- Activate it:
+
+```bash 
+jupyter-env\Scripts\activate        # Windows
+```
+
+- Install notebook:
+
+```bash 
+pip install notebook
+```
+Now you can run:
+
+```bash
+jupyter notebook
+```
 
 
