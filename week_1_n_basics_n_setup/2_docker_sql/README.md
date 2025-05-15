@@ -166,7 +166,17 @@ docker run -it \
 
 - -p 5431:5432: Maps port 5432 in the container to port 5431 on my machine. I used 5431 because 5432 was already in use.
 
-### How to 
+Now you can connect to this database. Open a new terminal and install client **pgcli** and connect to this database.
+
+- Install:
+```bash
+pip install pgcli
+```
+
+- Connect to postgresql database:
+```bash
+pgcli -U root -d ny_taxi -h localhost
+```
 
 
 
