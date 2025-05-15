@@ -137,5 +137,36 @@ After building the image, start a container using:
 
 docker run my-image-name
 
+## 🐘 Running PostgreSQL in a Docker Container
+After setting up a Python virtual environment and installing pgcli (a command-line interface for PostgreSQL), I ran a PostgreSQL container using Docker with the following command:
+
+```bash
+docker run -it \
+  -e POSTGRES_USER="root" \
+  -e POSTGRES_PASSWORD="root" \
+  -e POSTGRES_DB="ny_taxi" \
+  -v $(pwd)/ny_taxi_postgres_data:/var/lib/postgresql/data \
+  -p 5431:5432 \
+  postgres:13
+```
+
+- -it: Runs the container in interactive mode with a terminal.
+
+- docker run: Creates and starts the container from the specified image.
+
+- postgres:13: The PostgreSQL image to run. Docker pulls it if it's not already on the system.
+
+- POSTGRES_USER: The name of the PostgreSQL user I want to create.
+
+- POSTGRES_PASSWORD: The password for the user.
+
+- POSTGRES_DB: The name of the database to create.
+
+- -v $(pwd)/ny_taxi_postgres_data:/var/lib/postgresql/data: Mounts a local directory into the container to persist data. This ensures my data isn’t lost when the container stops or is removed.
+
+- -p 5431:5432: Maps port 5432 in the container to port 5431 on my machine. I used 5431 because 5432 was already in use.
+
+### How to 
+
 
 
