@@ -232,3 +232,19 @@ create pgAdmin database inside this network:
 ```bash
 docker run -it -e PGADMIN_DEFAULT_EMAIL="admin@admin.com" -e PGADMIN_DEFAULT_PASSWORD="root" -p 8080:80 --network pg-network --name pgadmin dpage/pgadmin4
 ```
+## Dockerizing the Ingestion Script
+- Convert jupyter notebook to script:
+
+```bash
+jupyter nbconvert --to=script upload-data.ip --to=script upload-data.ipynb
+```
+Run script file:
+```bash
+python ingest_data.py --user root --password root --host localhost 
+--port 5431 --database ny_taxi --table yellow_taxi_trips --url https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2021-01.parquet
+```
+
+docker build -t taxi_ingest:v001 .
+
+docker run --network pg-network taxi_ingest:v001 --user root --password root --host pg-database --port 5432 --database ny_taxi --table yellow_taxi_trips --url https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2021-01.parquet
+
