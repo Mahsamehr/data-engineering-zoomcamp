@@ -1,0 +1,39 @@
+services:
+  pgdatabase:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=ny_taxi
+    volumes:
+      - "./ny_taxi_postgres_data:/var/lib/postgresql/data:rw"
+    ports:
+      - "5431:5432"
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=root
+    volumes:
+      - "./pgadmin_data:/var/lib/pgadmin:rw"
+    ports:
+      - "8080:80"
+  ingestor:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: taxi_ingest:v001
+    depends_on:
+      - pgdatabase
+    command: >
+      --user root
+      --password root
+      --host pgdatabase
+      --port 5432
+      --db ny_taxi
+      --table_name yellow_taxi_trips
+      --url http://172.31.32.1:8000/yellow_tripdata_2021-01.csv
+
+  
+volumes:
+  pgadmin_data:

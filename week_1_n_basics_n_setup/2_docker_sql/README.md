@@ -239,12 +239,25 @@ docker run -it -e PGADMIN_DEFAULT_EMAIL="admin@admin.com" -e PGADMIN_DEFAULT_PAS
 jupyter nbconvert --to=script upload-data.ip --to=script upload-data.ipynb
 ```
 Run script file:
+
 ```bash
 python ingest_data.py --user root --password root --host localhost 
---port 5431 --database ny_taxi --table yellow_taxi_trips --url https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2021-01.parquet
+--port 5431 --database ny_taxi --table yellow_taxi_trips --url http://172.31.32.1:8000/yellow_tripdata_2021-01.csv
+```
+update the docker file and run following docker command:
+
+```bash 
+docker build -t taxi_ingest:v001 .
 ```
 
-docker build -t taxi_ingest:v001 .
+```bash
+docker run -it --network pg-network taxi_ingest:v001 --user root --password root --host pg-database --port 5432 --db ny_taxi --table_name yellow_taxi_trips --url http://172.31.32.1:8000/yellow_tripdata_2021-01.csv
+```
+## Running Postgres and pgAdmin with Docker-Compose
+- Create docker-compose.yaml file
+- Make sure database and pgAdmin containers are stopped and not running
+- Run 
 
-docker run --network pg-network taxi_ingest:v001 --user root --password root --host pg-database --port 5432 --database ny_taxi --table yellow_taxi_trips --url https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2021-01.parquet
-
+```bash
+docker-compose up
+```
